@@ -54,7 +54,7 @@ provider:
             - "arn:aws:events:${self:provider.region}:*:event-bus/default"
 
 custom:
-  # DynamoDB Table Name
+
   dynamoDBTable: ${self:service}-appointments-${self:provider.stage}
   
   # SNS Topics
@@ -207,15 +207,14 @@ resources:
         TopicName: ${self:custom.snsTopicCL}
         DisplayName: Medical Appointments Topic CL
 
-    # SQS Queue - Perú
+
     SqsPE:
       Type: AWS::SQS::Queue
       Properties:
         QueueName: ${self:custom.sqsPE}
         VisibilityTimeout: 300
-        MessageRetentionPeriod: 1209600 # 14 días
+        MessageRetentionPeriod: 1209600 
 
-    # SQS Queue - Chile
     SqsCL:
       Type: AWS::SQS::Queue
       Properties:
@@ -223,7 +222,7 @@ resources:
         VisibilityTimeout: 300
         MessageRetentionPeriod: 1209600
 
-    # SQS Queue - Confirmación
+
     SqsConfirmation:
       Type: AWS::SQS::Queue
       Properties:
@@ -243,7 +242,7 @@ resources:
             - SqsPE
             - Arn
 
-    # SNS Subscription - CL a SQS CL
+
     SnsCLSubscription:
       Type: AWS::SNS::Subscription
       Properties:
@@ -255,7 +254,7 @@ resources:
             - SqsCL
             - Arn
 
-    # SQS Policy - Perú
+
     SqsPEPolicy:
       Type: AWS::SQS::QueuePolicy
       Properties:
@@ -277,7 +276,7 @@ resources:
                   aws:SourceArn:
                     Ref: SnsPE
 
-    # SQS Policy - Chile
+
     SqsCLPolicy:
       Type: AWS::SQS::QueuePolicy
       Properties:
@@ -299,7 +298,7 @@ resources:
                   aws:SourceArn:
                     Ref: SnsCL
 
-    # EventBridge Rule - Enruta eventos de confirmación a SQS
+
     EventBridgeRule:
       Type: AWS::Events::Rule
       Properties:
@@ -318,7 +317,7 @@ resources:
                 - Arn
             Id: ConfirmationQueue
 
-    # EventBridge Permission para SQS
+
     EventBridgeToSqsPermission:
       Type: AWS::SQS::QueuePolicy
       Properties:
