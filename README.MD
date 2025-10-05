@@ -8,11 +8,6 @@
 - [Arquitectura](#arquitectura)
 - [Tecnologías Utilizadas](#tecnologías-utilizadas)
 - [Requisitos Previos](#requisitos-previos)
-- [Instalación](#instalación)
-- [Configuración](#configuración)
-- [Despliegue](#despliegue)
-- [Uso de la API](#uso-de-la-api)
-- [Pruebas](#pruebas)
 - [Estructura del Proyecto](#estructura-del-proyecto)
 - [Principios SOLID y Patrones](#principios-solid-y-patrones)
 - [Variables de Entorno](#variables-de-entorno)
@@ -29,7 +24,7 @@ Al presionar "Agendar", los datos se envían al backend que responde indicando q
 
 **Sistema multi-país:** Funciona tanto para Perú (PE) como Chile (CL), con procesamiento específico por país.
 
-## 🏗️ Arquitectura
+##  Arquitectura
 
 ```
 ┌─────────────┐
@@ -116,10 +111,6 @@ npm install -g serverless
 ```
 
 
-
-
-## ⚙️ Configuración
-
 ### Variables de Entorno
 
 Crea un archivo `.env` en la raíz del proyecto (no se incluye en el repositorio):
@@ -148,37 +139,10 @@ Ejecuta el script SQL en tus instancias RDS:
 mysql -h your-rds-endpoint -u admin -p < database-schema.sql
 ```
 
-## 🚢 Despliegue
-
-### Desarrollo
-
-```bash
-npm run deploy:dev
-```
-
-### Producción
-
-```bash
-npm run deploy:prod
-```
-
-### Ver logs en tiempo real
-
-```bash
-npm run logs
-```
-
-### Eliminar stack
-
-```bash
-npm run remove
-```
-
-## 📡 Uso de la API
 
 ### Base URL
 
-Después del despliegue, obtendrás una URL como:
+
 ```
 https://xxxxxxxxxx.execute-api.us-east-1.amazonaws.com/dev
 ```
@@ -347,28 +311,16 @@ medical-appointment-backend/
 | `RDS_PE_HOST` | Host de RDS Perú | `xxx.rds.amazonaws.com` |
 | `RDS_CL_HOST` | Host de RDS Chile | `yyy.rds.amazonaws.com` |
 
-## 📊 Monitoreo
+##  Monitoreo
 
 - **CloudWatch Logs:** Ver logs de todas las lambdas
 - **CloudWatch Metrics:** Métricas de invocaciones, errores, duración
 - **X-Ray:** Trazabilidad de requests (opcional)
 
-## 🤝 Contribución
 
-1. Fork el proyecto
-2. Crea una rama (`git checkout -b feature/nueva-funcionalidad`)
-3. Commit tus cambios (`git commit -m 'Agregar nueva funcionalidad'`)
-4. Push a la rama (`git push origin feature/nueva-funcionalidad`)
-5. Abre un Pull Request
 
-## 📄 Licencia
-
-MIT
 
 ## 👨‍💻 Autor
 
-Backend Team - Medical Appointment System
+Backend Team 
 
-## 📞 Soporte
-
-Para soporte, contactar a: backend@medical.com
